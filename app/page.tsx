@@ -95,10 +95,10 @@ export default function Home() {
           </a>
 
           <nav className="hidden md:flex items-center gap-6 text-sm text-gray-300">
-            <a href="#about" className="hover:text-white transition">About</a>
-            <a href="#skills" className="hover:text-white transition">Skills</a>
-            <a href="#projects" className="hover:text-white transition">Projects</a>
-            <a href="/resume" className="hover:text-white transition">Resume</a>
+            <a href="#about" className="hover:text-blue-300 transition">About</a>
+            <a href="#skills" className="hover:text-blue-300 transition">Skills</a>
+            <a href="#projects" className="hover:text-blue-300 transition">Projects</a>
+            <a href="/resume" className="hover:text-blue-300 transition">Resume</a>
           </nav>
 
           <a
@@ -245,7 +245,7 @@ export default function Home() {
         <div className="mx-auto max-w-5xl px-6">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <h2 className="text-3xl font-bold tracking-tight">Projects</h2>
+              <h2 className="text-3xl font-bold tracking-tight gradient-text">Projects</h2>
               <p className="mt-2 text-gray-400">Selected work and coursework projects.</p>
             </div>
 
