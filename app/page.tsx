@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 const skills = [
   "Python",
   "R",
@@ -32,7 +36,6 @@ const projects = [
 ];
 
 function MiniChart() {
-  // A tiny “analytics vibe” chart (SVG). No libs.
   return (
     <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
       <div className="flex items-end justify-between gap-4">
@@ -64,17 +67,27 @@ function MiniChart() {
           />
           {[20, 140, 260, 380, 500].map((x, i) => (
             <g key={i}>
-              <circle cx={x} cy={[110, 60, 78, 58, 35][i]} r="4" fill="rgba(255,255,255,0.85)" />
+              <circle
+                cx={x}
+                cy={[110, 60, 78, 58, 35][i]}
+                r="4"
+                fill="rgba(255,255,255,0.85)"
+              />
             </g>
           ))}
         </svg>
 
         <div className="mt-3 flex flex-wrap gap-2 text-xs text-gray-300">
-          {["Cleaning", "EDA", "Regression", "Validation", "Dashboard"].map((t) => (
-            <span key={t} className="rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-sm text-blue-300 hover:bg-blue-500/20 transition">
-              {t}
-            </span>
-          ))}
+          {["Cleaning", "EDA", "Regression", "Validation", "Dashboard"].map(
+            (t) => (
+              <span
+                key={t}
+                className="rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-sm text-blue-300 hover:bg-blue-500/20 transition"
+              >
+                {t}
+              </span>
+            )
+          )}
         </div>
       </div>
     </div>
@@ -82,43 +95,132 @@ function MiniChart() {
 }
 
 export default function Home() {
+  const [open, setOpen] = useState(false);
+
+  const navItems = [
+    { label: "About", href: "#about" },
+    { label: "Skills", href: "#skills" },
+    { label: "Web3", href: "#web3" },
+    { label: "Projects", href: "#projects" },
+    { label: "Contact", href: "#contact" },
+  ];
+
   return (
     <main className="premium-bg text-white">
-      {/* Background grid overlay */}
       <div className="pointer-events-none fixed inset-0 grid-overlay" />
 
-      {/* NAV */}
+      {/* TOP NAV */}
       <header className="sticky top-0 z-50 border-b border-white/10 bg-black/70 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-          <a href="/" className="font-semibold tracking-tight">
+          <a
+            href="#"
+            className="font-semibold tracking-tight"
+            onClick={() => setOpen(false)}
+          >
             Hein Htet Aung
           </a>
 
+          {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-6 text-sm text-gray-300">
-            <a href="#about" className="hover:text-blue-300 transition">About</a>
-            <a href="#skills" className="hover:text-blue-300 transition">Skills</a>
-            <a href="#projects" className="hover:text-blue-300 transition">Projects</a>
-            <a href="/resume" className="hover:text-blue-300 transition">Resume</a>
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="hover:text-blue-300 transition"
+              >
+                {item.label}
+              </a>
+            ))}
+
+            <a
+              href="/resume"
+              className="hover:text-blue-300 transition"
+              onClick={() => setOpen(false)}
+            >
+              Resume
+            </a>
+
             <a
               href="https://twitter.com/charanko404"
               target="_blank"
               rel="noreferrer"
               className="hover:text-blue-400 transition"
+              onClick={() => setOpen(false)}
             >
               Twitter
             </a>
-
           </nav>
 
-          <a
-            href="/Hein_Htet_Aung-CV.pdf"
-            target="_blank"
-            rel="noreferrer"
-            className="accent-btn rounded-lg px-6 py-3 font-medium"
-          >
-            Download CV
-          </a>
+          {/* Right actions */}
+          <div className="flex items-center gap-3">
+            <a
+              href="/Hein_Htet_Aung-CV.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="accent-btn rounded-lg px-6 py-3 font-medium hidden sm:inline-flex"
+              onClick={() => setOpen(false)}
+            >
+              Download CV
+            </a>
+
+            {/* Mobile menu button */}
+            <button
+              type="button"
+              className="md:hidden inline-flex items-center justify-center rounded-lg border border-white/20 px-3 py-2 text-sm font-medium hover:border-white/40 hover:bg-white/5 transition"
+              onClick={() => setOpen((v) => !v)}
+              aria-expanded={open}
+              aria-controls="mobile-nav"
+            >
+              {open ? "Close" : "Menu"}
+            </button>
+          </div>
         </div>
+
+        {/* Mobile nav */}
+        {open && (
+          <div id="mobile-nav" className="md:hidden border-t border-white/10">
+            <div className="mx-auto max-w-5xl px-6 py-4 flex flex-col gap-3 text-sm text-gray-300">
+              {navItems.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 hover:bg-white/10 hover:text-blue-300 transition"
+                  onClick={() => setOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ))}
+
+              <a
+                href="/resume"
+                className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 hover:bg-white/10 hover:text-blue-300 transition"
+                onClick={() => setOpen(false)}
+              >
+                Resume
+              </a>
+
+              <a
+                href="https://twitter.com/charanko404"
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 hover:bg-white/10 hover:text-blue-300 transition"
+                onClick={() => setOpen(false)}
+              >
+                Twitter (Web3)
+              </a>
+
+              <a
+                href="/Hein_Htet_Aung-CV.pdf"
+                target="_blank"
+                rel="noreferrer"
+                className="accent-btn rounded-lg px-4 py-3 font-medium text-center"
+                onClick={() => setOpen(false)}
+              >
+                Download CV
+              </a>
+            </div>
+          </div>
+        )}
       </header>
 
       {/* HERO */}
@@ -137,16 +239,13 @@ export default function Home() {
           </p>
 
           <p className="fade-up delay-3 mt-6 max-w-2xl text-gray-400 leading-relaxed">
-            ICT student at Rangsit University (Expected Graduation 2027) focused on data analysis,
-            statistics, and predictive modeling. I enjoy turning datasets into clear insights and
-            practical recommendations.
+            ICT student at Rangsit University (Expected Graduation 2027) focused
+            on data analysis, statistics, and predictive modeling. I enjoy
+            turning datasets into clear insights and practical recommendations.
           </p>
 
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
-            <a
-              href="#projects"
-              className="accent-btn rounded-lg px-6 py-3 font-medium"
-            >
+            <a href="#projects" className="accent-btn rounded-lg px-6 py-3 font-medium">
               View Projects
             </a>
 
@@ -176,7 +275,10 @@ export default function Home() {
         <div className="mx-auto max-w-5xl px-6">
           <div className="grid gap-4 sm:grid-cols-3">
             {metrics.map((m) => (
-              <div key={m.label} className="rounded-2xl border border-white/10 bg-white/5 p-6">
+              <div
+                key={m.label}
+                className="rounded-2xl border border-white/10 bg-white/5 p-6"
+              >
                 <p className="text-sm text-gray-400">{m.label}</p>
                 <p className="mt-1 text-lg font-semibold">{m.value}</p>
               </div>
@@ -192,8 +294,9 @@ export default function Home() {
             <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
               <h2 className="text-3xl font-bold tracking-tight">About</h2>
               <p className="mt-4 text-gray-300 leading-relaxed">
-                I’m an ICT student at Rangsit University (expected graduation 2027) with a strong interest in
-                data analysis, statistics, and building predictive models. I enjoy working with datasets to
+                I’m an ICT student at Rangsit University (expected graduation
+                2027) with a strong interest in data analysis, statistics, and
+                building predictive models. I enjoy working with datasets to
                 extract insights and support data-driven decisions.
               </p>
 
@@ -225,31 +328,18 @@ export default function Home() {
               {skills.map((s) => (
                 <span
                   key={s}
-                  className="rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-sm text-blue-300 hover:bg-blue-500/20 transition">
+                  className="rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-sm text-blue-300 hover:bg-blue-500/20 transition"
+                >
                   {s}
                 </span>
               ))}
             </div>
-
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
-              <div className="rounded-xl border border-white/10 bg-black/30 p-4">
-                <p className="text-sm text-gray-400">Data</p>
-                <p className="mt-1 font-semibold">Pandas, NumPy, SQL</p>
-              </div>
-              <div className="rounded-xl border border-white/10 bg-black/30 p-4">
-                <p className="text-sm text-gray-400">Modeling</p>
-                <p className="mt-1 font-semibold">Regression, Statistics</p>
-              </div>
-              <div className="rounded-xl border border-white/10 bg-black/30 p-4">
-                <p className="text-sm text-gray-400">Visualization</p>
-                <p className="mt-1 font-semibold">Tableau</p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
+
       {/* WEB3 EXPERIENCE */}
-      <section className="py-20">
+      <section id="web3" className="py-20">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="text-3xl font-bold tracking-tight gradient-text">
             Web3 Experience
@@ -257,9 +347,9 @@ export default function Home() {
 
           <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-8">
             <p className="text-gray-300 leading-relaxed">
-              Active contributor in Web3 and DeFi communities with a focus on data,
-              analytics, and content strategy. Experienced in on-chain analysis,
-              liquidity strategies, and protocol research.
+              Active contributor in Web3 and DeFi communities with a focus on
+              data, analytics, and content strategy. Experienced in on-chain
+              analysis, liquidity strategies, and protocol research.
             </p>
 
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
@@ -281,7 +371,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-        
+
       {/* PROJECTS */}
       <section id="projects" className="py-20">
         <div className="mx-auto max-w-5xl px-6">
@@ -301,7 +391,10 @@ export default function Home() {
 
           <div className="mt-8 grid gap-6">
             {projects.map((p) => (
-              <div key={p.title} className="rounded-2xl border border-white/10 bg-white/5 p-7 color-card transition color-card transition color-card transition color-card transition color-card transition color-card transition hover:border-white/20 transition">
+              <div
+                key={p.title}
+                className="rounded-2xl border border-white/10 bg-white/5 p-7 color-card hover:border-white/20 transition"
+              >
                 <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
                   <h3 className="text-xl font-semibold">{p.title}</h3>
                   <p className="text-sm text-gray-400">{p.period}</p>
@@ -322,7 +415,8 @@ export default function Home() {
                   {p.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-sm text-blue-300 hover:bg-blue-500/20 transition">
+                      className="rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-sm text-blue-300 hover:bg-blue-500/20 transition"
+                    >
                       {tag}
                     </span>
                   ))}
@@ -334,7 +428,7 @@ export default function Home() {
       </section>
 
       {/* CONTACT */}
-      <section className="py-20 bg-zinc-950">
+      <section id="contact" className="py-20 bg-zinc-950">
         <div className="mx-auto max-w-5xl px-6 text-center">
           <h2 className="text-3xl font-bold tracking-tight">Contact</h2>
           <p className="mt-3 text-gray-400">
@@ -355,18 +449,20 @@ export default function Home() {
             >
               0654462833
             </a>
+
             <a
-              href="https://twitter.com/YOUR_USERNAME"
+              href="https://twitter.com/charanko404"
               target="_blank"
               rel="noreferrer"
               className="rounded-lg border border-blue-500/40 px-6 py-3 font-medium text-blue-300 hover:bg-blue-500/10 transition"
             >
               Twitter (Web3)
             </a>
-
           </div>
 
-          <p className="mt-10 text-sm text-gray-500">© {new Date().getFullYear()} Hein Htet Aung</p>
+          <p className="mt-10 text-sm text-gray-500">
+            © {new Date().getFullYear()} Hein Htet Aung
+          </p>
         </div>
       </section>
     </main>
