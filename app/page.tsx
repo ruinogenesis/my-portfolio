@@ -43,7 +43,7 @@ function MiniChart() {
             Clean → Explore → Model → Evaluate → Report
           </p>
         </div>
-        <span className="rounded-full border border-white/15 bg-black/40 px-3 py-1 text-xs text-gray-200">
+        <span className="rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-sm text-blue-300 hover:bg-blue-500/20 transition">
           Sample
         </span>
       </div>
@@ -71,7 +71,7 @@ function MiniChart() {
 
         <div className="mt-3 flex flex-wrap gap-2 text-xs text-gray-300">
           {["Cleaning", "EDA", "Regression", "Validation", "Dashboard"].map((t) => (
-            <span key={t} className="rounded-full border border-white/15 bg-black/40 px-3 py-1">
+            <span key={t} className="rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-sm text-blue-300 hover:bg-blue-500/20 transition">
               {t}
             </span>
           ))}
@@ -105,7 +105,7 @@ export default function Home() {
             href="/Hein_Htet_Aung-CV.pdf"
             target="_blank"
             rel="noreferrer"
-            className="glow-btn inline-flex items-center justify-center rounded-lg border border-white/20 px-4 py-2 text-sm font-medium hover:border-white/40 hover:bg-white/5 transition"
+            className="accent-btn rounded-lg px-6 py-3 font-medium"
           >
             Download CV
           </a>
@@ -119,7 +119,7 @@ export default function Home() {
             Bangkok, Thailand • Open to entry-level roles
           </p>
 
-          <h1 className="fade-up delay-1 text-5xl font-bold tracking-tight sm:text-6xl">
+          <h1 className="text-5xl font-bold tracking-tight sm:text-6xl gradient-text">
             Hein Htet Aung
           </h1>
 
@@ -136,7 +136,7 @@ export default function Home() {
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
             <a
               href="#projects"
-              className="glow-btn rounded-lg bg-white px-6 py-3 font-medium text-black hover:opacity-90 transition"
+              className="accent-btn rounded-lg px-6 py-3 font-medium"
             >
               View Projects
             </a>
@@ -216,8 +216,7 @@ export default function Home() {
               {skills.map((s) => (
                 <span
                   key={s}
-                  className="rounded-full border border-white/15 bg-black/40 px-4 py-2 text-sm text-gray-200 hover:border-white/30 transition"
-                >
+                  className="rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-sm text-blue-300 hover:bg-blue-500/20 transition">
                   {s}
                 </span>
               ))}
@@ -260,7 +259,7 @@ export default function Home() {
 
           <div className="mt-8 grid gap-6">
             {projects.map((p) => (
-              <div key={p.title} className="rounded-2xl border border-white/10 bg-white/5 p-7 hover:border-white/20 transition">
+              <div key={p.title} className="rounded-2xl border border-white/10 bg-white/5 p-7 color-card transition color-card transition color-card transition color-card transition color-card transition color-card transition hover:border-white/20 transition">
                 <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
                   <h3 className="text-xl font-semibold">{p.title}</h3>
                   <p className="text-sm text-gray-400">{p.period}</p>
@@ -281,8 +280,7 @@ export default function Home() {
                   {p.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-white/15 bg-black/40 px-3 py-1 text-xs text-gray-200"
-                    >
+                      className="rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-sm text-blue-300 hover:bg-blue-500/20 transition">
                       {tag}
                     </span>
                   ))}
@@ -304,7 +302,7 @@ export default function Home() {
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
             <a
               href="mailto:heinhtet.a67@rsu.ac.th"
-              className="glow-btn rounded-lg bg-white px-6 py-3 font-medium text-black hover:opacity-90 transition"
+              className="accent-btn rounded-lg px-6 py-3 font-medium"
             >
               heinhtet.a67@rsu.ac.th
             </a>

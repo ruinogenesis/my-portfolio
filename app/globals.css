@@ -69,3 +69,42 @@ html { scroll-behavior: smooth; }
 .glow-btn:hover {
   box-shadow: 0 0 22px rgba(255,255,255,0.18);
 }
+
+:root {
+  --accent-blue: #3b82f6;
+  --accent-purple: #8b5cf6;
+  --accent-cyan: #06b6d4;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(
+    90deg,
+    var(--accent-blue),
+    var(--accent-purple)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Accent button */
+.accent-btn {
+  background: linear-gradient(
+    135deg,
+    var(--accent-blue),
+    var(--accent-purple)
+  );
+  color: white;
+  transition: 0.3s ease;
+}
+
+.accent-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.25);
+}
+
+/* Colored card hover */
+.color-card:hover {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.1);
+}
