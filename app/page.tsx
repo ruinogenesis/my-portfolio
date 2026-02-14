@@ -99,6 +99,15 @@ export default function Home() {
             <a href="#skills" className="hover:text-blue-300 transition">Skills</a>
             <a href="#projects" className="hover:text-blue-300 transition">Projects</a>
             <a href="/resume" className="hover:text-blue-300 transition">Resume</a>
+            <a
+              href="https://twitter.com/charanko404"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-blue-400 transition"
+            >
+              Twitter
+            </a>
+
           </nav>
 
           <a
@@ -239,7 +248,40 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/* WEB3 EXPERIENCE */}
+      <section className="py-20">
+        <div className="mx-auto max-w-5xl px-6">
+          <h2 className="text-3xl font-bold tracking-tight gradient-text">
+            Web3 Experience
+          </h2>
 
+          <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-8">
+            <p className="text-gray-300 leading-relaxed">
+              Active contributor in Web3 and DeFi communities with a focus on data,
+              analytics, and content strategy. Experienced in on-chain analysis,
+              liquidity strategies, and protocol research.
+            </p>
+
+            <div className="mt-6 grid gap-4 sm:grid-cols-3">
+              <div className="rounded-xl border border-white/10 bg-black/30 p-4">
+                <p className="text-sm text-gray-400">Focus</p>
+                <p className="mt-1 font-semibold">On-chain Analytics</p>
+              </div>
+
+              <div className="rounded-xl border border-white/10 bg-black/30 p-4">
+                <p className="text-sm text-gray-400">Ecosystem</p>
+                <p className="mt-1 font-semibold">DeFi / Solana</p>
+              </div>
+
+              <div className="rounded-xl border border-white/10 bg-black/30 p-4">
+                <p className="text-sm text-gray-400">Content</p>
+                <p className="mt-1 font-semibold">Educational Threads</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+        
       {/* PROJECTS */}
       <section id="projects" className="py-20">
         <div className="mx-auto max-w-5xl px-6">
@@ -313,6 +355,15 @@ export default function Home() {
             >
               0654462833
             </a>
+            <a
+              href="https://twitter.com/YOUR_USERNAME"
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-lg border border-blue-500/40 px-6 py-3 font-medium text-blue-300 hover:bg-blue-500/10 transition"
+            >
+              Twitter (Web3)
+            </a>
+
           </div>
 
           <p className="mt-10 text-sm text-gray-500">© {new Date().getFullYear()} Hein Htet Aung</p>
