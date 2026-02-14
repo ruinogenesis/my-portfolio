@@ -98,6 +98,7 @@ export default function Home() {
   const [open, setOpen] = useState(false);
 
   const navItems = [
+    { label: "Home", href: "#top" },
     { label: "About", href: "#about" },
     { label: "Skills", href: "#skills" },
     { label: "Web3", href: "#web3" },
@@ -107,6 +108,7 @@ export default function Home() {
 
   return (
     <main className="premium-bg text-white">
+      <span id="top" />
       <div className="pointer-events-none fixed inset-0 grid-overlay" />
 
       {/* TOP NAV */}
